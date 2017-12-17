@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+    p{
+        font-size:12px;
+        color:red;
+        font-weight:bold ;
+        word-spacing: 1px;
+    }
+
+    a:hover{
+        color:red;
+
+    }
+
+    a{
+        display:inline-block;
+        width:20px;/*在默认情况下宽度不起作用*/
+        height:20px;/*在默认情况下高度不起作用*/
+        background:pink;/*设置背景颜色为粉色*/
+        text-align:center; /*设置文本居中显示*/
+    }
+
+    .div1 {
+        border: 1px solid red;
+    }
+
+    .div2 {
+        border-bottom: 1px solid yellow;
+    }
+
+    #div3 {
+        width:100px;
+        height:100px;
+        margin: 5px;
+        padding:40px;
+        border:5px solid red;
+    }
+
+
+
+
+</style>
+
+<body>
+
+
+<form action="save.php" method="post" >
+
+
+    <label>性别:</label>
+    <label>男</label>
+    <input type="radio" value="1"  name="gender-man" />
+    <label>女</label>
+    <input type="radio" value="2"  name="gender-woman" />
+
+    <p>hello world</p>
+
+
+    <!-- 下拉框-->
+    <select>
+        <option value="看书">看书</option>
+        <option value="旅游">旅游</option>
+        <option value="运动">运动</option>
+        <option value="购物">购物</option>
+    </select>
+
+    <label for="male">男</label>
+    <input type="radio" name="gender" id="male" />
+    <br />
+    <label for="female">女</label>
+    <input type="radio" name="gender" id="female" />
+    <br />
+    <label for="email">输入你的邮箱地址</label>
+    <input type="email" id="email" placeholder="Enter email">
+
+
+    <h1>勇气</h1>
+    <p class="first">三年级时，我还是一个<a href="http://www.imooc.com">胆小如鼠</a>的小女孩，上课从来不敢回答老师提出的问题，生怕回答错了老师会批评我。就一直没有这个勇气来回答老师提出的问题。学校举办的活动我也没勇气参加。</p>
+    <p id="second">到了三年级下学期时，我们班上了一节公开课，老师提出了一个很<span>简单</span>的问题，班里很多同学都举手了，甚至成绩比我差很多的，也举手了，还说着："我来，我来。"我环顾了四周，就我没有举手。</p>
+    <img src="http://img.mukewang.com/52b4113500018cf102000200.jpg" >
+
+
+    <a>1</a>
+    <a>2</a>
+    <a>3</a>
+    <a>4</a>
+
+
+    <div class="div1">
+        div1 css 模型 边框
+    </div>
+
+    <div class="div2">
+        div2 css 模型 边框2 只设置一个方位
+    </div>
+
+    <div id="div3">
+        盒子3
+    </div>
+
+
+
+
+
+    <p> I can , I will, I must</p>
+
+    <span>内联元素1</span> <span>内联元素2, 在一行显示</span>
+
+    <input   type="submit"   value="提交"/>
+    <input type="reset" value="重置"/>
+
+
+
+
+</form>
+
+
+</body>
+</html>
