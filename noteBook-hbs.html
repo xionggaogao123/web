@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/handlebars.js/3.0.0/handlebars.js"></script>
+
+    <script id="note-template" type="text/x-handlebars-template">
+        <ul>
+            {{#each this}}
+            <li>
+                <div class="innerBox">
+                    <img src="{{image}}" alt="{{title}}">
+                    <div class="titleDiv">
+                        <span class="title">{{title}}</span>
+                       {{#equal hasNote 1}}
+                        <span class="note">有笔记</span>
+                        {{/equal}}
+                    </div>
+                    <div class="subTitle">{{subtitle}}</div>
+                    <div class="subTitle {{#long timespan}} long {{else}} short {{/long}}">时间：{{timespan}}</div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script id="pag-template" type="text/x-handlebars-template">
+        <ul>
+            {{#each this}}
+            <li data-id="{{index}}" {{#if cur}} class="cur" {{/if}} {{#if clickable}} class="clickable" {{/if}}>
+                {{{text}}}
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+</head>
+<body>
+
+
+    <div class="banner">
+        <h1>我的笔记本</h1>
+        <h3>你的指尖，有改变世界的力量</h3>
+    </div>
+
+    <div class="classes" id="classes">
+
+    </div>
+
+    <div class="pag" id="pag">
+
+    </div>
+
+    <div class="overlap" id="overlap"></div>
+
+    <div class="noteDetail">
+
+        <div class="chapterDiv"></div>
+
+        <div class="noteMiddleDiv"></div>
+
+        <div class="noteDiv"></div>
+
+    </div>
+
+</body>
+
+<script src="js/noteBook.js"></script>
+</html>

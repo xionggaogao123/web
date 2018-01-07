@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/handlebars.js/3.0.0/handlebars.js"></script>
+
+
+    <style>
+
+        .card{
+            font-size: 30px;
+            float: left;
+            margin: 20px;
+            background-color: pink;
+        }
+
+    </style>
+
+    <script id="card-template" type="text/x-handlebars-template">
+
+        {{#each this}}
+        <div class="card">
+
+            <div>{{chinese @index}}</div>
+            <div>姓名：{{name}}</div>
+
+            {{#if birth}}
+            <div>出生日期：{{birth}}</div>
+            {{/if}}
+
+            <div>出生地：{{home}}</div>
+            <div>职业：{{job}}</div>
+
+
+            <ul>
+                {{#each books}}
+                <li {{#isFirst @index}} style="color:red;" {{/isFirst}}>
+                    {{this}}
+                </li>
+                {{/each}}
+            </ul>
+
+
+            {{!--
+            <ul>
+                {{#with books}}
+                    {{#each this}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                {{/with}}
+            </ul>
+            --}}
+
+
+
+        </div>
+
+        {{/each}}
+    </script>
+
+
+    <script type="text/x-handlebars-template"  id='xx'>
+
+        <h1>{{title}}</h1>
+        <ul>
+            {{#names}}
+            <li>{{name}}</li>
+            {{/names}}
+        </ul>
+    </script>
+
+
+</head>
+
+
+<body>
+
+
+    <div  id="card">
+        <!--<div>姓名：凯文</div>
+        <div>出生日期：1992年</div>
+        <div>出生地：南昌</div>
+        <div>职业：安全咨询师</div>-->
+    </div>
+
+
+    <script>
+
+        var data = [{
+            name: "凯文",
+            birth: "1993年11月21",
+            home: "江西南昌",
+            job: "java工程师",
+            books:[
+                "入侵",
+                "电商"
+            ]
+        },
+            {
+                name: "凯文",
+                birth: "1993年11月21",
+                home: "江西南昌",
+                job: "java工程师",
+                books:[
+                    "文化"
+                ]
+            },
+            {
+                name: "凯文",
+                home: "江西南昌",
+                job: "java工程师",
+                books:[
+                    "文化"
+                ]
+            }
+        ];
+
+        Handlebars.registerHelper("chinese", function (value) {
+            var arr = ["一", "二", "三"];
+            return arr[value];
+        });
+
+        Handlebars.registerHelper("isFirst", function (value, options) {
+           if(value === 0) {
+               return options.fn(this);
+           }
+        });
+
+        Handlebars.registerHelper("isBlue", function (value, options) {
+            if (value && value.length > 2) {
+                return options.fn(this);
+            }
+        });
+
+        var str = "";
+        str += "<div>姓名：" + data.name + "</div>";
+        str += "<div>出生日期：" + data.birth + "</div>";
+        str += "<div>出生地：" + data.home + "</div>";
+        str += "<div>职业：" + data.job + "</div>";
+        $("#card").html(str);
+
+       var t = $("#card-template").html();
+       console.log(t);
+       var f = Handlebars.compile(t);
+       var h = f(data);
+       $("#card").html(h);
+
+    </script>
+
+
+    <script type="text/javascript">
+        var source=document.getElementById('xx').innerHTML;
+        var template = Handlebars.compile(source);
+        console.log(template);
+        var data = {"title": "Story", "names": [{"name": "Tarzan"}, {"name": "Jane"}]};
+        console.log(template(data));
+    </script>
+
+</body>
+
+
+
+</html>
