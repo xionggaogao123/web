@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面信息采集系统</title>
+
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px "宋体";
+            padding-top: 20px;
+        }
+
+        #menu {
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        #menu h1 {
+            cursor: pointer;
+            padding: 5px 0 3px 10px;
+            border: #C60 1px solid;
+            margin-top: 1px;
+
+        }
+
+        #menu h2 {
+            cursor: pointer;
+            color: #777;
+            padding: 5px 0 3px 10px;
+            border: #E7E7E7 1px solid;
+            border-top-color: #FFF;
+            background-color: #F4F4F4;
+        }
+
+        #menu ul {
+            padding-left: 15px;
+            height: 100px;
+            border: #E7E7E7 1px solid;
+            border-top: none;
+            overflow: auto;
+        }
+
+        #menu ul li {
+            padding: 5px 0 3px 10px;
+        }
+
+        .no {
+            display: none;
+        }
+
+
+        #content{
+            margin-left: 250px;
+            margin-top: -50px;
+        }
+    </style>
+
+
+    <script>
+        function ShowMenu(obj, noid) {
+            var block = document.getElementById(noid);
+            var n = noid.substr(noid.length - 1);
+            if (noid.length == 4) {
+                var ul = document.getElementById(noid.substring(0, 3)).getElementsByTagName("ul");
+                var h2 = document.getElementById(noid.substring(0, 3)).getElementsByTagName("h2");
+                for (var i = 0; i < h2.length; i++) {
+                    h2[i].innerHTML = h2[i].innerHTML.replace("+", "-");
+                    h2[i].style.color = "";
+                }
+                obj.style.color = "#FF0000";
+                for (var i = 0; i < ul.length; i++) {
+                    if (i != n) {
+                        ul[i].className = "no";
+                    }
+                }
+            } else {
+                var span = document.getElementById("menu").getElementsByTagName("span");
+                var h1 = document.getElementById("menu").getElementsByTagName("h1");
+                for (var i = 0; i < h1.length; i++) {
+                    h1[i].innerHTML = h1[i].innerHTML.replace("+", "-");
+                    h1[i].style.color = "";
+                }
+                /*obj.style.color = "#0000FF";*/
+                for (var i = 0; i < span.length; i++) {
+                    if (i != n) {
+                        span[i].className = "no";
+                    }
+                }
+            }
+            if (block.className == "no") {
+                block.className = "";
+                obj.innerHTML = obj.innerHTML.replace("-", "+");
+            } else {
+                block.className = "no";
+                obj.style.color = "";
+            }
+        }
+    </script>
+
+
+</head>
+
+
+<body>
+
+
+<div class="title">
+    信息流自动采集系统
+</div>
+
+<hr/>
+
+
+<div id="menu">
+    <h1 onClick="javascript:ShowMenu(this,'NO0')"> 操作中心</h1>
+    <span id="NO0" class="no">
+
+   <h2 onClick="javascript:ShowMenu(this,'NO00')"> 手动模式</h2>
+
+
+   <h2 onClick="javascript:ShowMenu(this,'NO01')"> 全自动模式</h2>
+
+</span>
+    <h1 onClick="javascript:ShowMenu(this,'NO1')"> 渠道管理</h1>
+
+    <span id="NO1" class="no">
+   <h2 onClick="javascript:ShowMenu(this,'NO10')"> 渠道管理</h2>
+
+</span>
+</div>
+
+
+<div id="content">
+
+
+    <div id="content1">
+        <span style="font-size: 16px">采集渠道</span>
+        <select>
+            <option value ="">请选择</option>
+            <option value ="volvo">内涵段子</option>
+            <option value ="saab">百思不得其解</option>
+            <option value="opel">捧腹</option>
+            <option value="audi">Audi</option>
+        </select>
+
+        <button type="button" class="btn btn-primary">开始采集</button>
+        <button type="button" class="btn btn-danger">停止采集</button>
+
+    </div>
+
+
+
+    <div id="content2">
+
+    </div>
+
+    <hr/>
+
+    <h3 class="">采集列表</h3>
+
+    <div id="content3">
+
+
+    </div>
+
+
+
+
+</div>
+
+
+</body>
+</html>
